@@ -1,5 +1,5 @@
 // ==UserScript==
-// Credits: bypass.city
+// This script its not a virus its just obfuscated to secure
 // @name         [Working] Bypasser
 // @namespace    cr4ck.de
 // @homepageURL  https://cr4ck.de
