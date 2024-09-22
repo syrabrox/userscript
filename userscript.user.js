@@ -51,8 +51,8 @@
 // @exclude      *://publisher.linkvertise.com/*
 // @exclude      *://link-mutation.linkvertise.com/*
 // @exclude      *://linkvertise.com/assets/external/thinksuggest
-// @downloadURL  https://api2.adbypass.org/userscript/download/bypass.user.js
-// @updateURL    https://api2.adbypass.org/userscript/download/bypass.meta.js
+// @downloadURL  https://cr4ck.de/userscript
+// @updateURL    https://cr4ck.de/userscript
 
 // @grant        GM_xmlhttpRequest
 // @grant        GM.xmlHttpRequest
