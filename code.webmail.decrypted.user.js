@@ -1,10 +1,10 @@
 // ==UserScript==
-// This script is obfuscated and secured (not a virus)
-// @name         [Working] Krnl Bypasser [Universall]
-// @namespace    cr4ck.de
+// @name         Autofill on mail.cr4ck.de
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Autofill inputs on mail.cr4ck.de
 // @homepageURL  https://cr4ck.de
 // @supportURL   https://cr4ck.de/dc
-// @description  just waits 15 seconds for krnl and works fine with the other stuff 2 (it waits no time for other stuff) :)
 
 // Add all new websites here
 // @match        https://mail.cr4ck.de/*
