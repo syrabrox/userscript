@@ -1,5 +1,6 @@
 // ==UserScript==
-// This script is obfuscated and secured (not a virus)
+// This script is obfuscated and secured
+// Credits to Bypass.city script
 // @name         [Working] Krnl Bypasser [Universall]
 // @namespace    cr4ck.de
 // @homepageURL  https://cr4ck.de
