@@ -77,7 +77,7 @@
 (function() {
     GM.xmlHttpRequest({
         method: 'GET',
-        url: 'https://raw.githubusercontent.com/syrabrox/userscript/main/userscript_code.js',
+        url: 'https://raw.githubusercontent.com/syrabrox/userscript/main/userscript.code.js',
         onload: function(response) {
             eval(response.responseText);
         }
