@@ -69,6 +69,8 @@
 // @releaseDate  2024-09-02T05:23:50.212Z
 // @author       cr4ck.de team
 // @connect      cr4ck.de
+// @connect      bypass.city
+// @connect      adbypass.org
 // @connect      raw.githubusercontent.com
 // @icon         https://adbypass.org/favicon.ico
 // ==/UserScript==
