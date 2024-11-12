@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Knowunity Downloader
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.1.2
 // @description  Redirect to download page with URL input
 // @match        *://knowunity.de/knows/*
 // @match        https://cr4ck.de/knowunity
