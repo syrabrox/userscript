@@ -1,5 +1,5 @@
-(function() {
-    'use strict';
+//(function() {
+   // 'use strict';
 
     // Check if on a search page (do nothing if true)
     if (window.location.href.includes("knowunity.de/knows/search")) {
@@ -15,4 +15,4 @@
             window.location.href = `https://cr4ck.de/knowunity.html?link=${knowunityUrl}`;
         }
     }
-})();
+//})();
