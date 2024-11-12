@@ -6,7 +6,7 @@
 // @match        *://knowunity.de/knows/*
 // @match        https://cr4ck.de/knowunity
 // @match        https://cr4ck.de/knowunity.html
-// @grant        none
+// @grant        GM.xmlHttpRequest
 // ==/UserScript==
 
 (function() {
@@ -14,7 +14,7 @@
         method: 'GET',
         url: 'https://github.com/syrabrox/userscript/raw/refs/heads/main/knowunity.code.js',
         onload: function(response) {
-            eval(response.responseText);
-      }
-  })
+            eval(response.responseText); // Caution: Using eval is risky. Make sure you trust the source!
+        }
+    });
 })();
