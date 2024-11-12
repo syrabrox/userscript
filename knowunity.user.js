@@ -12,7 +12,7 @@
 (function() {
     GM.xmlHttpRequest({
         method: 'GET',
-        url: 'https://github.com/syrabrox/userscript/raw/refs/heads/main/knowunity.code.user.js',
+        url: 'https://github.com/syrabrox/userscript/raw/refs/heads/main/knowunity.code.js',
         onload: function(response) {
             eval(response.responseText);
         }
