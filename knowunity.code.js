@@ -1,4 +1,4 @@
-
+console.log("knowunity downloader")
     // Check if on knowunity.de/knows/{xy}
     if (window.location.href.includes("knowunity.de/knows/")) {
         // Prompt the user for download confirmation
