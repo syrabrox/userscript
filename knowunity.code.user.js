@@ -19,11 +19,21 @@
     if (window.location.href === "https://cr4ck.de/knowunity" || window.location.href === "https://cr4ck.de/knowunity.html") {
         window.addEventListener("load", function() {
             const knowunityUrl = sessionStorage.getItem("knowunityUrl");
-            const inputField = document.getElementById("knowunity_url");
-            if (knowunityUrl && inputField) {
-                inputField.value = knowunityUrl;
-                generateUrl(); // Run generateUrl function
-                sessionStorage.removeItem("knowunityUrl"); // Clean up storage
+
+            if (knowunityUrl) {
+                // Use MutationObserver to wait for the input field to load
+                const observer = new MutationObserver(() => {
+                    const inputField = document.getElementById("knowunity_url");
+                    if (inputField) {
+                        inputField.value = knowunityUrl;
+                        generateUrl(); // Run generateUrl function
+                        sessionStorage.removeItem("knowunityUrl"); // Clean up storage
+                        observer.disconnect(); // Stop observing once done
+                    }
+                });
+
+                // Start observing the body for changes to detect the input field
+                observer.observe(document.body, { childList: true, subtree: true });
             }
         });
     }
