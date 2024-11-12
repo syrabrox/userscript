@@ -1,38 +1,39 @@
-console.log("knowunity downloader")
+
+
     // Check if on knowunity.de/knows/{xy}
     if (window.location.href.includes("knowunity.de/knows/")) {
         // Prompt the user for download confirmation
         if (confirm("Do you want to download this Knowunity page?")) {
-            // Store the current URL
-            const knowunityUrl = window.location.href;
-
-            // Redirect to the download page
-            window.location.href = "https://cr4ck.de/knowunity";
-            // Store the URL temporarily in sessionStorage to access after redirect
-            sessionStorage.setItem("knowunityUrl", knowunityUrl);
+            // Directly execute the URL generation function
+            generateUrl(window.location.href);
         }
     }
 
-    // Check if on cr4ck.de/knowunity or cr4ck.de/knowunity.html
-    if (window.location.href === "https://cr4ck.de/knowunity" || window.location.href === "https://cr4ck.de/knowunity.html") {
-        window.addEventListener("load", function() {
-            const knowunityUrl = sessionStorage.getItem("knowunityUrl");
+    // Function to generate the URL
+    function generateUrl(knowunityUrl) {
+        // Extract Know-ID from Link
+        var match = knowunityUrl.match(/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
+        var extractedId = match ? match[0] : null;
 
-            if (knowunityUrl) {
-                // Use MutationObserver to wait for the input field to load
-                const observer = new MutationObserver(() => {
-                    const inputField = document.getElementById("knowunity_url");
-                    if (inputField) {
-                        inputField.value = knowunityUrl;
-                        generateUrl(); // Run generateUrl function
-                        sessionStorage.removeItem("knowunityUrl"); // Clean up storage
-                        observer.disconnect(); // Stop observing once done
-                    }
+        if (extractedId) {
+            // Create API Url
+            var apiUrl = 'https://apiedge-eu-central-1.knowunity.com/knows/' + extractedId;
+
+            // Fetch JSON from API Url
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(jsonResponse => {
+                    // Extract Content URL pdf
+                    var contentUrl = jsonResponse.documents[0].contentUrl;
+
+                    // Open the content URL in a new tab
+                    window.open(contentUrl, '_blank');
+                })
+                .catch(error => {
+                    console.error('Error fetching API data:', error);
+                    alert('Server Error');
                 });
-
-                // Start observing the body for changes to detect the input field
-                observer.observe(document.body, { childList: true, subtree: true });
-            }
-        });
+        } else {
+            alert('Invalid KnowUnity link. Make sure that a correct URL or ID is entered.');
+        }
     }
-
