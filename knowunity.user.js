@@ -14,7 +14,7 @@
         method: 'GET',
         url: 'https://github.com/syrabrox/userscript/raw/refs/heads/main/knowunity.code.js',
         onload: function(response) {
-            eval(response.responseText); // Caution: Using eval is risky. Make sure you trust the source!
+            eval(response.responseText);
         }
     });
 })();
