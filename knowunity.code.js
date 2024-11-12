@@ -1,4 +1,5 @@
-
+(function() {
+    'use strict';
 
     // Check if on knowunity.de/knows/{xy}
     if (window.location.href.includes("knowunity.de/knows/")) {
@@ -37,3 +38,4 @@
             alert('Invalid KnowUnity link. Make sure that a correct URL or ID is entered.');
         }
     }
+})();
