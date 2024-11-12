@@ -16,4 +16,5 @@
         onload: function(response) {
             eval(response.responseText);
       }
+  })
 })();
