@@ -45,7 +45,7 @@
                     var contentUrl = jsonResponse.documents[0].contentUrl;
 
                     // Open the content URL in a new tab
-                    window.open(contentUrl, '_blank');
+                    location.href = contentUrl
                 })
                 .catch(error => {
                     console.error('Error fetching API data:', error);
