@@ -1,5 +1,3 @@
-(function() {
-    'use strict';
 
     // Check if on knowunity.de/knows/{xy}
     if (window.location.href.includes("knowunity.de/knows/")) {
@@ -37,4 +35,4 @@
             }
         });
     }
-})();
+
