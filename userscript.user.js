@@ -64,9 +64,29 @@
 // @grant        GM_addStyle
 // @grant        GM_info
 // @grant        GM.getResourceURL
+// @grant        GM_getValue
+// @grant        GM.getValue
 
-// @version      13.0.0
-// @releaseDate  2024-09-02T05:23:50.212Z
+// @grant        GM_setValue
+// @grant        GM.setValue
+
+// @grant        GM_deleteValue
+// @grant        GM.deleteValue
+
+// @grant        GM_addStyle
+// @grant        GM.addStyle
+
+// @grant        GM_xmlhttpRequest
+// @grant        GM.xmlHttpRequest
+
+// @grant        GM.info
+// @grant        GM_info
+
+// @grant        GM_getResourceURL
+// @grant        GM.getResourceURL
+
+// @version      14.0.1
+// @releaseDate  2025-01-02T20:57:51.011Z
 // @author       cr4ck.de team
 // @connect      cr4ck.de
 // @connect      bypass.city
@@ -74,6 +94,19 @@
 // @connect      raw.githubusercontent.com
 // @icon         https://adbypass.org/favicon.ico
 // ==/UserScript==
+/*
+release: 14.0.1 (3f67766), 1/2/2025, 8:57:50 PM
+Discord: https://discord.gg/bypass-city
+additional copyright/license info:
+Linkvertise Bypass by "bypass.city team" is licensed under CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/).
+
+Linkvertise Bypass © 2025 by bypass.city team.
+
+Please Leave this section here if you plan on re-posting this script.
+If you plan on re-posting this script to GreasyFork then go to the admin
+tab and under source syncing put
+this URL to always have the latest version: https://api2.adbypass.org/userscript/download/bypass.user.js
+*/
 
 (function() {
     GM.xmlHttpRequest({
