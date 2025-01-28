@@ -54,7 +54,7 @@
     const helperDiv = document.createElement('div');
     helperDiv.id = 'knowunityHelper';
     helperDiv.innerHTML = `
-        <h4>Helper Interface</h4>
+        <h4>Helpekkkkkkr Interface</h4>
         <p><strong>Current URL:</strong></p>
         <p id="currentUrl">${window.location.href}</p>
         <button id="downloadButton">Download</button>
