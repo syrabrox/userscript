@@ -1,20 +1,4 @@
-// ==UserScript==
-// @name         KnowUnity & Cr4ck Helper
-// @namespace    http://tampermonkey.net/
-// @version      1.5
-// @description  Zeigt ein Interface mit statischem Titel, Beschreibung und Aktionen auf KnowUnity und cr4ck.de an.
-// @author       Dein Name
-// @match        https://knowunity.de/*
-// @match        https://knowunity.de/app/knows/*
-// @match        https://cr4ck.de/*
-// @grant        none
-// ==/UserScript==
-
-(function () {
-    'use strict';
-
-    // Style für das Interface
-    const styles = `
+const styles = `
         #knowunityHelper {
             position: fixed;
             top: 10px;
@@ -41,7 +25,7 @@
         #knowunityHelper button:hover {
             background-color: #0056b3;
         }
-        #knowunityHelper p, #knowunityHelper h4 {
+        #knowunityHelper p {
             margin: 10px 0;
         }
         #generatedUrl span {
@@ -61,18 +45,32 @@
     helperDiv.id = 'knowunityHelper';
     helperDiv.innerHTML = `
         <h4>Helper Interface</h4>
-        <p>This script provides an Interface to download PDF</p>
-        <label for="currentUrl">Current URL:</label>
-        <input type="text" id="currentUrl" value="${window.location.href}" readonly>
+        <p><strong>Current URL:</strong></p>
+        <p id="currentUrl">${window.location.href}</p>
         <button id="downloadButton">Download</button>
         <button id="closeButton">Close</button>
         <div id="generatedUrl"></div>
     `;
     document.body.appendChild(helperDiv);
 
+    // Funktion zur Aktualisierung der aktuellen URL
+    const updateCurrentUrl = () => {
+        const currentUrlElement = document.getElementById('currentUrl');
+        currentUrlElement.textContent = window.location.href;
+    };
+
+    // URL-Änderungen überwachen
+    let lastUrl = window.location.href;
+    setInterval(() => {
+        if (window.location.href !== lastUrl) {
+            lastUrl = window.location.href;
+            updateCurrentUrl();
+        }
+    }, 500); // Überprüft jede halbe Sekunde, ob sich die URL geändert hat
+
     // Funktion für den Download-Button
     document.getElementById('downloadButton').addEventListener('click', function () {
-        const currentUrl = document.getElementById('currentUrl').value;
+        const currentUrl = window.location.href;
 
         // Extrahiere Know-ID aus der URL (nur für KnowUnity)
         const match = currentUrl.match(/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
@@ -109,4 +107,4 @@
             helperDiv.remove(); // Entfernt das Interface
         }
     });
-})();
+})
