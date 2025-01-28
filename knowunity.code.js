@@ -55,10 +55,21 @@
                 <div id="generatedUrl"></div>
             \`;
             document.body.appendChild(helperDiv);
-
+            var downloadButton = document.getElementById('downloadButton')
             const updateCurrentUrl = () => {
                 const currentUrlElement = document.getElementById('currentUrl');
-                currentUrlElement.textContent = window.location.href;
+                const currentUrl = window.location.href;
+                currentUrlElement.textContent = currentUrl;
+                
+                
+                const match = currentUrl.match(/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
+                const extractedId = match ? match[0] : null;
+                if(extractedId){
+                   downloadButton.setAttribute("disabled", "true");
+                }else{
+                   downloadButton.setAttribute("disabled", "false");
+                }
+   
             };
 
             let lastUrl = window.location.href;
@@ -69,7 +80,7 @@
                 }
             }, 500);
 
-            document.getElementById('downloadButton').addEventListener('click', function () {
+            downloadButton.addEventListener('click', function () {
                 const currentUrl = window.location.href;
 
                 const match = currentUrl.match(/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
