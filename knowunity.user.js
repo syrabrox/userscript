@@ -3,7 +3,9 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.1.2
 // @description  Redirect to download page with URL input
-// @match        *://knowunity.de/knows/*
+// @match        https://knowunity.de/*
+// @match        https://knowunity.de/app/knows/*
+// @match        https://cr4ck.de/*
 // @match        https://cr4ck.de/knowunity
 // @match        https://cr4ck.de/knowunity.html
 // @grant        GM.xmlHttpRequest
