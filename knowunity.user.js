@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Helper Interface
 // @namespace    cr4ck Team
-// @version      1.1.1
+// @version      2.0.0
 // @description  Redirect to download page with URL input
 // @match        https://knowunity.de/*
 // @match        https://knowunity.de/app/knows/*
