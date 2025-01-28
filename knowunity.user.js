@@ -1,13 +1,15 @@
 // ==UserScript==
-// @name         Knowunity Downloader
-// @namespace    http://tampermonkey.net/
-// @version      1.1.2
+// @name         Helper Interface
+// @namespace    cr4ck Team
+// @version      1.1.1
 // @description  Redirect to download page with URL input
 // @match        https://knowunity.de/*
 // @match        https://knowunity.de/app/knows/*
 // @match        https://cr4ck.de/*
 // @match        https://cr4ck.de/knowunity
 // @match        https://cr4ck.de/knowunity.html
+// @updateURL    https://cr4ck.de/knowunity
+// @downloadURL  https://cr4ck.de/knowunity
 // @grant        GM.xmlHttpRequest
 // ==/UserScript==
 
