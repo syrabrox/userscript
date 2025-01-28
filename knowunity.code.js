@@ -48,7 +48,7 @@
             helperDiv.id = 'knowunityHelper';
             helperDiv.innerHTML = \`
                 <h4>Helper Interface</h4>
-                <p><strong>Aktuelle URL:</strong></p>
+                <p><strong>Current URL:</strong></p>
                 <p id="currentUrl">\${window.location.href}</p>
                 <button id="downloadButton">Download</button>
                 <button id="closeButton">Close</button>
@@ -83,8 +83,9 @@
                         .then(jsonResponse => {
                             const contentUrl = jsonResponse.documents[0].contentUrl;
 
-                            const generatedUrlDiv = document.getElementById('generatedUrl');
-                            generatedUrlDiv.innerHTML = \`Content URL: <span id="contentUrl" onclick="window.open('\${contentUrl}', '_blank')">\${contentUrl}</span>\`;
+                            //const generatedUrlDiv = document.getElementById('generatedUrl');
+                            //generatedUrlDiv.innerHTML = \`Content URL: <span id="contentUrl" onclick="window.open('\${contentUrl}', '_blank')">\${contentUrl}</span>\`;
+                            window.open(contentUrl, "_blank");
                         })
                         .catch(error => {
                             console.error('Fehler beim Abrufen der API-Daten:', error);
