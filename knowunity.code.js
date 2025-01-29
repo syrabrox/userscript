@@ -1,6 +1,4 @@
 (function () {
-    const userscript = `
-        (function () {
     'use strict';
 
     const styles = `
@@ -139,10 +137,4 @@
             toggleHelperCircle.style.display = 'none';
         }
     });
-})();
-`;
-
-    const script = document.createElement('script');
-    script.textContent = userscript;
-    document.body.appendChild(script);
 })();
