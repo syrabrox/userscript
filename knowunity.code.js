@@ -69,7 +69,7 @@
             helperDiv.innerHTML = \`
                 <h4>Helper Interface</h4><p>v5.0.0</p>
                 <p><strong>Current URL:</strong></p>
-                <input id="currentUrl"/>
+                <input disabled id="currentUrl"/>
                 <button id="downloadButton">Download</button>
                 <button id="closeButton">Close</button>
                 <div id="generatedUrl"></div>
