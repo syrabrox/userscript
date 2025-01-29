@@ -60,7 +60,9 @@
                 }
             \`;
 
-            GM_addStyle(styles);
+            const styleElement = document.createElement('style');
+            styleElement.innerHTML = styles;
+            document.head.appendChild(styleElement);
 
             const helperDiv = document.createElement('div');
             helperDiv.id = 'knowunityHelper';
