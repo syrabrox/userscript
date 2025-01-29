@@ -70,6 +70,7 @@
                 <h4>Helper Interface</h4><p>v5.0.0</p>
                 <p><strong>Current URL:</strong></p>
                 <p id="currentUrl">\${window.location.href}</p>
+                <input value="\${window.location.href}"/>
                 <button id="downloadButton">Download</button>
                 <button id="closeButton">Close</button>
                 <div id="generatedUrl"></div>
@@ -79,7 +80,7 @@
             const toggleHelperCircle = document.createElement('div');
             toggleHelperCircle.id = 'toggleHelperCircle';
             toggleHelperCircle.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/64/64576.png" alt="Toggle Helper">';
-            toggleHelperCircle.style.display = 'none'; // Initially hidden
+            toggleHelperCircle.style.display = 'none';
             document.body.appendChild(toggleHelperCircle);
 
             var downloadButton = document.getElementById('downloadButton')
