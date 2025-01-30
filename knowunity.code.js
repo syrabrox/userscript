@@ -106,20 +106,17 @@
                 if (extractedId) {
                     const apiUrl = \`https://apiedge-eu-central-1.knowunity.com/knows/\${extractedId}\`;
 
-                    GM.xmlHttpRequest({
-                        method: 'GET',
-                        url: apiUrl,
-                        onload: function (response) {
-                            const jsonResponse = JSON.parse(response.responseText);
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(jsonResponse => {
                             const contentUrl = jsonResponse.documents[0].contentUrl;
-
-                            // Open the content URL in a new tab
-                            GM_openInTab(contentUrl, { active: true });
-                        },
-                        onerror: function (error) {
+                            //const generatedUrlDiv = document.getElementById('generatedUrl');
+                            //generatedUrlDiv.innerHTML = `Content URL: <span id="contentUrl" onclick="window.open('${contentUrl}', '_blank')">${contentUrl}</span>`;
+                            window.open(contentUrl, "_blank")
+                        })
+                        .catch(error => {
                             console.error('Fehler beim Abrufen der API-Daten:', error);
                             alert('Serverfehler oder ungültige URL.');
-                        }
                     });
                 } else {
                     alert('Keine KnowUnity-ID gefunden. Funktioniert nur auf KnowUnity-Seiten.');
