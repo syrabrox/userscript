@@ -106,7 +106,7 @@
                 if (extractedId) {
                     const apiUrl = \`https://apiedge-eu-central-1.knowunity.com/knows/\${extractedId}\`;
 
-                    GM_xmlhttpRequest({
+                    GM.xmlHttpRequest({
                         method: 'GET',
                         url: apiUrl,
                         onload: function (response) {
