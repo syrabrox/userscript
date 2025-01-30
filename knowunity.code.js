@@ -67,7 +67,7 @@
             const helperDiv = document.createElement('div');
             helperDiv.id = 'knowunityHelper';
             helperDiv.innerHTML = \`
-                <h4>Helper Interface</h4><p id="scriptVersion">v2.0.2</p>
+                <h4>wad Interface</h4><p id="scriptVersion">v2.0.1</p>
                 <p><strong>Current URL:</strong></p>
                 <input disabled id="currentUrl"/>
                 <button id="downloadButton">Download</button>
@@ -106,17 +106,20 @@
                 if (extractedId) {
                     const apiUrl = \`https://apiedge-eu-central-1.knowunity.com/knows/\${extractedId}\`;
 
-                    fetch(apiUrl)
-                        .then(response => response.json())
-                        .then(jsonResponse => {
+                    GM.xmlHttpRequest({
+                        method: 'GET',
+                        url: apiUrl,
+                        onload: function (response) {
+                            const jsonResponse = JSON.parse(response.responseText);
                             const contentUrl = jsonResponse.documents[0].contentUrl;
-                            //const generatedUrlDiv = document.getElementById('generatedUrl');
-                            //generatedUrlDiv.innerHTML = `Content URL: <span id="contentUrl" onclick="window.open('${contentUrl}', '_blank')">${contentUrl}</span>`;
-                            window.open(contentUrl, "_blank")
-                        })
-                        .catch(error => {
+
+                            // Open the content URL in a new tab
+                            GM_openInTab(contentUrl, { active: true });
+                        },
+                        onerror: function (error) {
                             console.error('Fehler beim Abrufen der API-Daten:', error);
                             alert('Serverfehler oder ungültige URL.');
+                        }
                     });
                 } else {
                     alert('Keine KnowUnity-ID gefunden. Funktioniert nur auf KnowUnity-Seiten.');
