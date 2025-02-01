@@ -73,8 +73,8 @@
     const bootstrapperDiv = document.createElement('div');
     bootstrapperDiv.id = 'bootstrapperDiv';
     bootstrapperDiv.innerHTML = `
-        <h4>Helper Interface</h4>
-        <p id="scriptVersion">v2.1.2</p>
+        <h4>Helper Interface [DEV]</h4>
+        <p id="scriptVersion">v2.1.3</p>
         <p><strong>Current URL:</strong></p>
         <input disabled id="currentUrl"/>
         <button id="downloadButton">Download</button>
@@ -182,7 +182,7 @@
         const extractedId = match ? match[0] : null;
 
         if (extractedId) {
-            const apiUrl = `https://apiedge-eu-central-1.knowunity.com/knows/\${extractedId}`;
+            const apiUrl = `https://apiedge-eu-central-1.knowunity.com/knows/${extractedId}`;
 
             fetch(apiUrl)
                 .then(response => response.json())
