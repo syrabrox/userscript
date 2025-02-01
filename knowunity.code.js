@@ -105,9 +105,9 @@
             styleElement.innerHTML = styles;
             document.head.appendChild(styleElement);
 
-            const helperDiv = document.createElement('div');
-            helperDiv.id = 'knowunityHelper';
-            helperDiv.innerHTML = \`
+            const bootstrapperDiv = document.createElement('div');
+            bootstrapperDiv.id = 'knowunityHelper';
+            bootstrapperDiv.innerHTML = \`
                 <h4>Helper Interface</h4>
 		<p id="scriptVersion">v2.0.6</p>
                 <p><strong>Current URL:</strong></p>
@@ -122,7 +122,7 @@
             toggleHelperCircle.style.display = 'none';
             const currentUrl = window.location.href;
 	    document.body.appendChild(toggleHelperCircle);
-            document.body.appendChild(helperDiv);
+            document.body.appendChild(bootstrapperDiv);
 
 	    const bootstrapperVersion = localStorage.getItem("bootstrapperVersion");
 	    const scriptVersionElement = document.getElementById('scriptVersion').innerText
@@ -141,7 +141,7 @@
                 updateButton.onclick = function() {
                 	window.open('https://cr4ck.de/assets/files/knowunity.user.js', '_self');
             	}
-		helperDiv.appendChild(updateButton);
+		bootstrapperDiv.appendChild(updateButton);
 	     }
 
             const updateCurrentUrl = () => {
@@ -188,17 +188,17 @@
             });
 
             document.getElementById('closeButton').addEventListener('click', function () {
-                const helperDiv = document.getElementById('knowunityHelper');
-                if (helperDiv) {
-                    helperDiv.style.display = 'none';
+                const bootstrapperDiv = document.getElementById('knowunityHelper');
+                if (bootstrapperDiv) {
+                    bootstrapperDiv.style.display = 'none';
                     toggleHelperCircle.style.display = 'flex';
                 }
             });
 
             toggleHelperCircle.addEventListener('click', function () {
-                const helperDiv = document.getElementById('knowunityHelper');
-                if (helperDiv) {
-                    helperDiv.style.display = 'block';
+                const bootstrapperDiv = document.getElementById('knowunityHelper');
+                if (bootstrapperDiv) {
+                    bootstrapperDiv.style.display = 'block';
                     toggleHelperCircle.style.display = 'none';
                 }
             });
