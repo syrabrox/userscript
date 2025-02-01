@@ -33,11 +33,6 @@
                 #knowunityHelper p {
                     margin: 10px 0;
                 }
-                #generatedUrl span {
-                    color: blue;
-                    text-decoration: underline;
-                    cursor: pointer;
-                }
                 #toggleHelperCircle {
                     position: fixed;
                     top: 10px;
@@ -72,7 +67,6 @@
                 <input disabled id="currentUrl"/>
                 <button id="downloadButton">Download</button>
                 <button id="closeButton">Close</button>
-                <div id="generatedUrl"></div>
             \`;
 
             const toggleHelperCircle = document.createElement('div');
@@ -86,22 +80,22 @@
 			const runnerVersion = localStorage.getItem("runnerVersion");
 			const scriptVersionElement = document.getElementById('scriptVersion').innerText
 			const scriptVersion = scriptVersionElement.replace("v", " ").trim();
-             if(runnerVersion == null){
-		const updateButton = document.createElement('button');
+            if(runnerVersion == null){
+				const updateButton = document.createElement('button');
                 updateButton.innerText = "Update"
                 updateButton.onclick = function() {
-                  window.open('https://cr4ck.de/userscript/3', '_self');
+                	window.open('https://cr4ck.de/userscript/1', '_self');
             	}
-		updateButton.click()
+				updateButton.click()
             }
-	    if (runnerVersion < scriptVersion){
+			if (runnerVersion < scriptVersion){
               	const updateButton = document.createElement('button');
                 updateButton.innerText = "Update"
                 updateButton.onclick = function() {
-                  window.open('https://cr4ck.de/assets/files/knowunity.user.js', '_self');
+                	window.open('https://cr4ck.de/assets/files/knowunity.user.js', '_self');
             	}
-		helperDiv.appendChild(updateButton);
-	    }
+				helperDiv.appendChild(updateButton);
+			}
 
             const updateCurrentUrl = () => {
                 const currentUrlElement = document.getElementById('currentUrl');
@@ -163,7 +157,6 @@
             });
         })();
     `;
-
     const script = document.createElement('script');
     script.textContent = userscript;
     document.body.appendChild(script);
