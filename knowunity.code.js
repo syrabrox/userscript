@@ -16,6 +16,7 @@
                     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
                     font-family: Arial, sans-serif;
                     width: 300px;
+		    color: black;
                 }
                 #knowunityHelper button {
                     margin-top: 10px;
@@ -29,6 +30,9 @@
                 }
                 #knowunityHelper button:hover {
                     background-color: #0056b3;
+                }
+		#knowunityHelper h4 {
+                    color: violet;
                 }
                 #knowunityHelper p {
                     margin: 10px 0;
