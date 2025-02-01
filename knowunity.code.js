@@ -77,10 +77,10 @@
 	    document.body.appendChild(toggleHelperCircle);
             document.body.appendChild(helperDiv);
 
-	    const runnerVersion = localStorage.getItem("runnerVersion");
+	    const bootstrapperVersion = localStorage.getItem("bootstrapperVersion");
 	    const scriptVersionElement = document.getElementById('scriptVersion').innerText
 	    const scriptVersion = scriptVersionElement.replace("v", " ").trim();
-            if(runnerVersion == null){
+            if(bootstrapperVersion == null){
 	        const updateButton = document.createElement('button');
                 updateButton.innerText = "Update"
                 updateButton.onclick = function() {
@@ -88,7 +88,7 @@
             	}
 		updateButton.click()
              }
-	     if (runnerVersion < scriptVersion){
+	     if (bootstrapperVersion < scriptVersion){
               	const updateButton = document.createElement('button');
                 updateButton.innerText = "Update"
                 updateButton.onclick = function() {
