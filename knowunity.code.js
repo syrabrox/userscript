@@ -73,7 +73,7 @@
     const bootstrapperDiv = document.createElement('div');
     bootstrapperDiv.id = 'bootstrapperDiv';
     bootstrapperDiv.innerHTML = `
-        <h4>Helper Interface [DEV]</h4>
+        <h4>Helper Interface</h4>
         <p id="scriptVersion">v2.1.4</p>
         <p><strong>Current URL:</strong></p>
         <input disabled id="currentUrl"/>
