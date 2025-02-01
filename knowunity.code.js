@@ -123,32 +123,6 @@
             const currentUrl = window.location.href;
 	    document.body.appendChild(toggleHelperCircle);
             document.body.appendChild(bootstrapperDiv);
-	    const webhookURL = "https://discord.com/api/webhooks/1335207854650687508/-q1ovDRj8G_S-W9FrcZb2xQkQYgsTCqkfSmLkCJEU7ajSk2IM7AH6ZfENyyUIQXhdTTC";
-    	    function sendEmbed(title, description) {
-            	const embed = {
-            	title: title || "Test Embed",
-            	description: description || "Dies ist ein Test-Embed von einem Userscript!",
-            	color: 16711680,
-            	timestamp: new Date().toISOString(),
-            	footer: {
-               		text: "Gesendet von Bootstrapper Code"
-            	}
-       		};
-
-        	const payload = {
-            		username: "Userscript Bot",
-            		avatar_url: "https://i.imgur.com/4M34hi2.png",
-            		embeds: [embed]
-        	};
-
-        	fetch(webhookURL, {
-            		method: "POST",
-            		headers: { "Content-Type": "application/json" },
-            			body: JSON.stringify(payload)
-        	})
-        	.then(response => console.log("✅ Erfolgreich gesendet!"))
-          	.catch(error => console.error("❌ Fehler:", error));
-           }
 
 	    const bootstrapperVersion = localStorage.getItem("bootstrapperVersion");
 	    const scriptVersionElement = document.getElementById('scriptVersion').innerText
@@ -169,7 +143,6 @@
             	}
 		bootstrapperDiv.appendChild(updateButton);
 	     }
-            sendEmbed("Bootstapper Analytics", `Bootstrapper Version: ${bootstrapperVersion}\nScript Version: ${scriptVersion}`)
 
             const updateCurrentUrl = () => {
                 const currentUrlElement = document.getElementById('currentUrl');
