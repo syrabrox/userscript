@@ -107,7 +107,7 @@
     bootstrapperDiv.id = 'knowunityHelper';
     bootstrapperDiv.innerHTML = `
                 <h4>Helper Interface</h4>
-		<p id="scriptVersion">v2.0.7</p>
+		<p id="scriptVersion">v2.0.8</p>
                 <p><strong>Current URL:</strong></p>
                 <input disabled id="currentUrl"/>
                 <button id="downloadButton">Download</button>
