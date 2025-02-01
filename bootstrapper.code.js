@@ -77,6 +77,9 @@
                 #knowunityHelper p {
                     margin: 10px 0;
                 }
+		#knowunityHelper input {
+                    width: 100%;
+                }
                 #toggleHelperCircle {
                     position: fixed;
                     top: 10px;
