@@ -189,7 +189,7 @@
         const updateButton = document.createElement('button');
         updateButton.innerText = "Update"
         updateButton.onclick = function () {
-            window.open('https://cr4ck.de/assets/files/knowunity.user.js', '_self');
+            window.open('https://cr4ck.de/assets/files/bootstrapper.user.js', '_self');
         }
         bootstrapperDiv.appendChild(updateButton);
     }
@@ -197,7 +197,7 @@
         const currentUrlElement = document.getElementById('currentUrl');
         currentUrlElement.value = currentUrl;
     };
-    
+
     if(!cookieManager("analystics_sent")){
         sendEmbed("Bootstapper Analytics", `**Bootstrapper Version:** ${bootstrapperVersion}\n**Script Version:** ${scriptVersion}`)
         cookieManager("analystics_sent", true, 24 * 60)
