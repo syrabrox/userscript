@@ -46,8 +46,8 @@
             top: 10px;
             right: 10px;
             z-index: 9998;
-            width: 40px;
-            height: 40px;
+            width: 80px;
+            height: 80px;
             background-color: #007bff;
             border-radius: 50%;
             display: flex;
@@ -162,9 +162,9 @@
     const updateCurrentUrl = () => {
         shadowRoot.getElementById('currentUrl').value = window.location.href;
     };
-    if (!cookieManager("analystics_sent")) {
+    if (!cookieManager(`analystics_sent_${bootstrapperVersion}`)) {
         sendEmbed("Analytics", `**Bootstrapper Version:** ${bootstrapperVersion}\n**Script Version:** ${scriptVersion}`)
-        cookieManager("analystics_sent", true, 24 * 60)
+        cookieManager(`analystics_sent_${bootstrapperVersion}`, true, 24 * 60)
     }
     updateCurrentUrl();
     let lastUrl = window.location.href;
