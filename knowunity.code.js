@@ -74,32 +74,32 @@
             toggleHelperCircle.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/64/64576.png" alt="Toggle Helper">';
             toggleHelperCircle.style.display = 'none';
             const currentUrl = window.location.href;
-			document.body.appendChild(toggleHelperCircle);
+	    document.body.appendChild(toggleHelperCircle);
             document.body.appendChild(helperDiv);
 
-			const runnerVersion = localStorage.getItem("runnerVersion");
-			const scriptVersionElement = document.getElementById('scriptVersion').innerText
-			const scriptVersion = scriptVersionElement.replace("v", " ").trim();
+	    const runnerVersion = localStorage.getItem("runnerVersion");
+	    const scriptVersionElement = document.getElementById('scriptVersion').innerText
+	    const scriptVersion = scriptVersionElement.replace("v", " ").trim();
             if(runnerVersion == null){
-				const updateButton = document.createElement('button');
+	        const updateButton = document.createElement('button');
                 updateButton.innerText = "Update"
                 updateButton.onclick = function() {
                 	window.open('https://cr4ck.de/userscript/1', '_self');
             	}
-				updateButton.click()
-            }
-			if (runnerVersion < scriptVersion){
+		updateButton.click()
+             }
+	     if (runnerVersion < scriptVersion){
               	const updateButton = document.createElement('button');
                 updateButton.innerText = "Update"
                 updateButton.onclick = function() {
                 	window.open('https://cr4ck.de/assets/files/knowunity.user.js', '_self');
             	}
-				helperDiv.appendChild(updateButton);
-			}
+		helperDiv.appendChild(updateButton);
+	     }
 
             const updateCurrentUrl = () => {
                 const currentUrlElement = document.getElementById('currentUrl');
-                currentUrlElement.value = currentUrl; //textContent
+                currentUrlElement.value = currentUrl;
             };
 
             updateCurrentUrl();
@@ -122,19 +122,19 @@
                     const apiUrl = \`https://apiedge-eu-central-1.knowunity.com/knows/\${extractedId}\`;
 
                     fetch(apiUrl)
-    					.then(response => response.json())
-    					.then(jsonResponse => {
-        					if (jsonResponse.documents && jsonResponse.documents.length > 0) {
-            					const contentUrl = jsonResponse.documents[0].contentUrl;
-            					window.open(contentUrl, "_blank");
-        					} else {
-            					alert("Keine Dokumente gefunden.");
-        					}
-    					})
-    					.catch(error => {
-        					console.error('Fehler beim Abrufen der API-Daten:', error);
-        					alert('Serverfehler oder ungültige URL.');
-    				});
+    		      .then(response => response.json())
+    		      .then(jsonResponse => {
+        			if (jsonResponse.documents && jsonResponse.documents.length > 0) {
+            				const contentUrl = jsonResponse.documents[0].contentUrl;
+            				window.open(contentUrl, "_blank");
+        			} else {
+            				alert("Keine Dokumente gefunden.");
+        			}
+    			})
+    			.catch(error => {
+        			console.error('Fehler beim Abrufen der API-Daten:', error);
+        			alert('Serverfehler oder ungültige URL.');
+    			});
                 } else {
                     alert('Keine KnowUnity-ID gefunden. Funktioniert nur auf KnowUnity-Seiten.');
                 }
