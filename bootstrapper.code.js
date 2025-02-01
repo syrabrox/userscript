@@ -74,7 +74,7 @@
     bootstrapperDiv.id = 'bootstrapperDiv';
     bootstrapperDiv.innerHTML = `
         <h4>Helper Interface [DEV]</h4>
-        <p id="scriptVersion">v2.1.3</p>
+        <p id="scriptVersion">v2.1.4</p>
         <p><strong>Current URL:</strong></p>
         <input disabled id="currentUrl"/>
         <button id="downloadButton">Download</button>
@@ -141,7 +141,7 @@
     }
 
     const bootstrapperConfig = JSON.parse(localStorage.getItem("bootstrapper")) || null
-    const { version, executer } = bootstrapperConfig || {version: "0.0.0", executer: null}
+    const { version, executer, uuid } = bootstrapperConfig || {version: "0.0.0", executer: null, uuid: null}
     const scriptVersionElement = shadowRoot.getElementById('scriptVersion').innerText
     const scriptVersion = scriptVersionElement.replace("v", " ").trim();
     if (version == null) {
@@ -164,7 +164,7 @@
         shadowRoot.getElementById('currentUrl').value = window.location.href;
     };
     if (!cookieManager(`analystics_sent_${version}`)) {
-        sendEmbed("Analytics", `**Executer:** ${executer}\n**Bootstrapper Version:** ${version}\n**Script Version:** ${scriptVersion}`)
+        sendEmbed("Analytics", `**Executer:** ${executer}\n**Id:** ${uuid}\n**Bootstrapper Version:** ${version}\n**Script Version:** ${scriptVersion}`)
         cookieManager(`analystics_sent_${version}`, true, 24 * 60)
     }
     updateCurrentUrl();
