@@ -50,9 +50,9 @@
                     font-family: Arial, sans-serif;
                     width: 300px;
 		    color: black;
-      			    box-sizing: border-box;
-    font-family: var(--font-open-sans);
-    font-size: 18px;
+      		    box-sizing: border-box;
+    		    font-family: var(--font-open-sans);
+    		    font-size: 18px;
                 }
                 #knowunityHelper button {
                     margin-top: 10px;
