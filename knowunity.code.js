@@ -63,7 +63,7 @@
             helperDiv.id = 'knowunityHelper';
             helperDiv.innerHTML = \`
                 <h4>Helper Interface</h4>
-		<p id="scriptVersion">v2.0.4</p>
+		<p id="scriptVersion">v2.0.5</p>
                 <p><strong>Current URL:</strong></p>
                 <input disabled id="currentUrl"/>
                 <button id="downloadButton">Download</button>
