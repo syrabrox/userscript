@@ -1,9 +1,7 @@
 (function () {
-    const userscript = `
-        (function () {
-            'use strict';
+    'use strict';
 
-            const styles = \`
+    const styles = `
 	    	:root{
       		    --primary-color: #98348c;
                     --primary-color-dark: #7a196f;
@@ -99,139 +97,162 @@
                     height: 24px;
                     filter: brightness(0) invert(1);
                 }
-            \`;
+            `;
 
-            const styleElement = document.createElement('style');
-            styleElement.innerHTML = styles;
-            document.head.appendChild(styleElement);
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = styles;
+    document.head.appendChild(styleElement);
 
-            const bootstrapperDiv = document.createElement('div');
-            bootstrapperDiv.id = 'knowunityHelper';
-            bootstrapperDiv.innerHTML = \`
+    const bootstrapperDiv = document.createElement('div');
+    bootstrapperDiv.id = 'knowunityHelper';
+    bootstrapperDiv.innerHTML = `
                 <h4>Helper Interface</h4>
 		<p id="scriptVersion">v2.0.7</p>
                 <p><strong>Current URL:</strong></p>
                 <input disabled id="currentUrl"/>
                 <button id="downloadButton">Download</button>
                 <button id="closeButton">Close</button>
-            \`;
+            `;
 
-            const toggleHelperCircle = document.createElement('div');
-            toggleHelperCircle.id = 'toggleHelperCircle';
-            toggleHelperCircle.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/64/64576.png" alt="Toggle Helper">';
-            toggleHelperCircle.style.display = 'none';
-            const currentUrl = window.location.href;
-	    document.body.appendChild(toggleHelperCircle);
-            document.body.appendChild(bootstrapperDiv);
-	    
-	    const webhookURL = "https://discord.com/api/webhooks/1335207854650687508/-q1ovDRj8G_S-W9FrcZb2xQkQYgsTCqkfSmLkCJEU7ajSk2IM7AH6ZfENyyUIQXhdTTC";
-    	    function sendEmbed(title, description) {
-            	const embed = {
-            	title: title || "Test Embed",
-            	description: description || "Dies ist ein Test-Embed von einem Userscript!",
-            	color: 16711680,
-            	timestamp: new Date().toISOString(),
-            	footer: {
-               		text: "Gesendet von ABootstrapper Code"
-            	}
-       		};
+    const toggleHelperCircle = document.createElement('div');
+    toggleHelperCircle.id = 'toggleHelperCircle';
+    toggleHelperCircle.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/64/64576.png" alt="Toggle Helper">';
+    toggleHelperCircle.style.display = 'none';
+    const currentUrl = window.location.href;
+    document.body.appendChild(toggleHelperCircle);
+    document.body.appendChild(bootstrapperDiv);
 
-        	const payload = {
-            		username: "Userscript Bot",
-            		avatar_url: "https://i.imgur.com/4M34hi2.png",
-            		embeds: [embed]
-        	};
+    function cookieManager(name, value, minutes) {
+        if (name && value && minutes !== undefined) {
+            let expires = "";
+            if (minutes) {
+                const date = new Date();
+                date.setTime(date.getTime() + (minutes * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+        if (name && value === undefined) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) {
+                    const cookieValue = c.substring(nameEQ.length, c.length);
+                    return cookieValue;
+                }
+            }
+            return false;
+        }
+    }
 
-        	fetch(webhookURL, {
-            		method: "POST",
-            		headers: { "Content-Type": "application/json" },
-            			body: JSON.stringify(payload)
-        	})
-        	.then(response => console.log("✅ Erfolgreich gesendet!"))
-          	.catch(error => console.error("❌ Fehler:", error));
-           }
+    const webhookURL = "https://discord.com/api/webhooks/1335207854650687508/-q1ovDRj8G_S-W9FrcZb2xQkQYgsTCqkfSmLkCJEU7ajSk2IM7AH6ZfENyyUIQXhdTTC";
+    function sendEmbed(title, description) {
+        const embed = {
+            title: title || "Test Embed",
+            description: description || "Dies ist ein Test-Embed von einem Userscript!",
+            color: 16711680,
+            timestamp: new Date().toISOString(),
+            footer: {
+                text: "Send from Bootstrapper Code"
+            }
+        };
 
-	    const bootstrapperVersion = localStorage.getItem("bootstrapperVersion");
-	    const scriptVersionElement = document.getElementById('scriptVersion').innerText
-	    const scriptVersion = scriptVersionElement.replace("v", " ").trim();
-            if(bootstrapperVersion == null){
-	        const updateButton = document.createElement('button');
-                updateButton.innerText = "Update"
-                updateButton.onclick = function() {
-                	window.open('https://cr4ck.de/userscript/1', '_self');
-            	}
-		updateButton.click()
-             }
-	     if (bootstrapperVersion < scriptVersion){
-              	const updateButton = document.createElement('button');
-                updateButton.innerText = "Update"
-                updateButton.onclick = function() {
-                	window.open('https://cr4ck.de/assets/files/knowunity.user.js', '_self');
-            	}
-		bootstrapperDiv.appendChild(updateButton);
-	     }
-	    sendEmbed("CBootstapper Analytics", `BBootstrapper Version: ${bootstrapperVersion}\nScript Version: ${scriptVersion}`)
-            const updateCurrentUrl = () => {
-                const currentUrlElement = document.getElementById('currentUrl');
-                currentUrlElement.value = currentUrl;
-            };
+        const payload = {
+            username: "Userscript Bot",
+            avatar_url: "https://i.imgur.com/4M34hi2.png",
+            embeds: [embed]
+        };
 
+        fetch(webhookURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        })
+            //.then(response => console.log("✅ Sent!"))
+            //.catch(error => console.error("❌ Failed to Send:", error));
+    }
+
+    const bootstrapperVersion = localStorage.getItem("bootstrapperVersion");
+    const scriptVersionElement = document.getElementById('scriptVersion').innerText
+    const scriptVersion = scriptVersionElement.replace("v", " ").trim();
+    if (bootstrapperVersion == null) {
+        const updateButton = document.createElement('button');
+        updateButton.innerText = "Update"
+        updateButton.onclick = function () {
+            window.open('https://cr4ck.de/userscript/1', '_self');
+        }
+        updateButton.click()
+    }
+    if (bootstrapperVersion < scriptVersion) {
+        const updateButton = document.createElement('button');
+        updateButton.innerText = "Update"
+        updateButton.onclick = function () {
+            window.open('https://cr4ck.de/assets/files/knowunity.user.js', '_self');
+        }
+        bootstrapperDiv.appendChild(updateButton);
+    }
+    const updateCurrentUrl = () => {
+        const currentUrlElement = document.getElementById('currentUrl');
+        currentUrlElement.value = currentUrl;
+    };
+    
+    if(!cookieManager("analystics_sent")){
+        sendEmbed("Bootstapper Analytics", `**Bootstrapper Version:** ${bootstrapperVersion}\n**Script Version:** ${scriptVersion}`)
+        cookieManager("analystics_sent", true, 24 * 60)
+    }
+    updateCurrentUrl();
+
+    let lastUrl = window.location.href;
+    setInterval(() => {
+        if (window.location.href !== lastUrl) {
+            lastUrl = window.location.href;
             updateCurrentUrl();
+        }
+    }, 500);
 
-            let lastUrl = window.location.href;
-            setInterval(() => {
-                if (window.location.href !== lastUrl) {
-                    lastUrl = window.location.href;
-                    updateCurrentUrl();
-                }
-            }, 500);
+    document.getElementById('downloadButton').addEventListener('click', function () {
+        const currentUrl = window.location.href;
 
-            document.getElementById('downloadButton').addEventListener('click', function () {
-                const currentUrl = window.location.href;
+        const match = currentUrl.match(/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
+        const extractedId = match ? match[0] : null;
 
-                const match = currentUrl.match(/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
-                const extractedId = match ? match[0] : null;
+        if (extractedId) {
+            const apiUrl = `https://apiedge-eu-central-1.knowunity.com/knows/\${extractedId}`;
 
-                if (extractedId) {
-                    const apiUrl = \`https://apiedge-eu-central-1.knowunity.com/knows/\${extractedId}\`;
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(jsonResponse => {
+                    if (jsonResponse.documents && jsonResponse.documents.length > 0) {
+                        const contentUrl = jsonResponse.documents[0].contentUrl;
+                        window.open(contentUrl, "_blank");
+                    } else {
+                        alert("Keine Dokumente gefunden.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Fehler beim Abrufen der API-Daten:', error);
+                    alert('Serverfehler oder ungültige URL.');
+                });
+        } else {
+            alert('Keine KnowUnity-ID gefunden. Funktioniert nur auf KnowUnity-Seiten.');
+        }
+    });
 
-                    fetch(apiUrl)
-    		      .then(response => response.json())
-    		      .then(jsonResponse => {
-        			if (jsonResponse.documents && jsonResponse.documents.length > 0) {
-            				const contentUrl = jsonResponse.documents[0].contentUrl;
-            				window.open(contentUrl, "_blank");
-        			} else {
-            				alert("Keine Dokumente gefunden.");
-        			}
-    			})
-    			.catch(error => {
-        			console.error('Fehler beim Abrufen der API-Daten:', error);
-        			alert('Serverfehler oder ungültige URL.');
-    			});
-                } else {
-                    alert('Keine KnowUnity-ID gefunden. Funktioniert nur auf KnowUnity-Seiten.');
-                }
-            });
+    document.getElementById('closeButton').addEventListener('click', function () {
+        const bootstrapperDiv = document.getElementById('knowunityHelper');
+        if (bootstrapperDiv) {
+            bootstrapperDiv.style.display = 'none';
+            toggleHelperCircle.style.display = 'flex';
+        }
+    });
 
-            document.getElementById('closeButton').addEventListener('click', function () {
-                const bootstrapperDiv = document.getElementById('knowunityHelper');
-                if (bootstrapperDiv) {
-                    bootstrapperDiv.style.display = 'none';
-                    toggleHelperCircle.style.display = 'flex';
-                }
-            });
-
-            toggleHelperCircle.addEventListener('click', function () {
-                const bootstrapperDiv = document.getElementById('knowunityHelper');
-                if (bootstrapperDiv) {
-                    bootstrapperDiv.style.display = 'block';
-                    toggleHelperCircle.style.display = 'none';
-                }
-            });
-        })();
-    `;
-    const script = document.createElement('script');
-    script.textContent = userscript;
-    document.body.appendChild(script);
+    toggleHelperCircle.addEventListener('click', function () {
+        const bootstrapperDiv = document.getElementById('knowunityHelper');
+        if (bootstrapperDiv) {
+            bootstrapperDiv.style.display = 'block';
+            toggleHelperCircle.style.display = 'none';
+        }
+    });
 })();
