@@ -141,7 +141,7 @@
     }
 
     const bootstrapperConfig = JSON.parse(localStorage.getItem("bootstrapper")) || null
-    const version, executer = bootstrapperConfig || {version: "0.0.0", executer: null}
+    const { version, executer } = bootstrapperConfig || {version: "0.0.0", executer: null}
     const scriptVersionElement = shadowRoot.getElementById('scriptVersion').innerText
     const scriptVersion = scriptVersionElement.replace("v", " ").trim();
     if (version == null) {
