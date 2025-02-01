@@ -4,6 +4,39 @@
             'use strict';
 
             const styles = \`
+	    	:root{
+      		    --primary-color: #98348c;
+                    --primary-color-dark: #7a196f;
+                    --secondary-color: #65a0f1;
+                    --secondary-color-dark: #4990f3;
+                    --secondary-color-darker: #2b3f5f;
+                    --gradient-from: rgba(245,36,229,.8);
+                    --gradient-to: rgba(80,162,248,.8);
+                    --gradient-degree: 45deg;
+                    --blue-background-color: #143767;
+                    --blue-background-color: #65a0f1;
+                    --light-blue-background-color: #88baff;
+                    --gray-background-color: #fafafa;
+                    --white-background-color: #fff;
+                    --headline: #18191a;
+                    --caption: #c2c7cc;
+                    --text-light-gray: #616366;
+                    --text-gray: #919599;
+                    --text-dark: #3d3e40;
+                    --gray: #9b9b9b;
+                    --gray-dark: #6d6d6d;
+                    --red: #dc3545;
+                    --green: #35dc80;
+                    --red-dark: #ff5f6f;
+                    --yellow: #dfaa0c;
+                    --navbar-height: 70px;
+                    --border-radius-small: 2px;
+                    --border-radius-large: 8px;
+                    --border-radius-huge: 30px;
+                    --font-poppins: "Poppins",sans-serif;
+                    --font-open-sans: "Open Sans",sans-serif;
+                    --font-inter: "Inter",sans-serif;
+                }
                 #knowunityHelper {
                     position: fixed;
                     top: 10px;
@@ -17,6 +50,9 @@
                     font-family: Arial, sans-serif;
                     width: 300px;
 		    color: black;
+      			    box-sizing: border-box;
+    font-family: var(--font-open-sans);
+    font-size: 18px;
                 }
                 #knowunityHelper button {
                     margin-top: 10px;
@@ -31,8 +67,14 @@
                 #knowunityHelper button:hover {
                     background-color: #0056b3;
                 }
+		h1, h2, h3, h4, h5, p {
+    		    overflow-wrap: break-word;
+		}
 		#knowunityHelper h4 {
-                    color: violet;
+                    text-transform: uppercase;
+    		    font-size: 20px;
+    		    color: var(--primary-color);
+    		    text-align: center;
                 }
                 #knowunityHelper p {
                     margin: 10px 0;
