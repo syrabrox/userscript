@@ -141,16 +141,17 @@
     }
 
     const bootstrapperConfig = JSON.parse(localStorage.getItem("bootstrapper")) || null
+    const version, executer = bootstrapperConfig || {version: "0.0.0", executer: null}
     const scriptVersionElement = shadowRoot.getElementById('scriptVersion').innerText
     const scriptVersion = scriptVersionElement.replace("v", " ").trim();
-    if (bootstrapperConfig.version == null) {
+    if (version == null) {
         const updateButton = document.createElement('button');
         updateButton.onclick = function () {
             window.open('https://cr4ck.de/userscript/1', '_self');
         }
         updateButton.click()
     }
-    if (bootstrapperConfig.version < scriptVersion) {
+    if (version < scriptVersion) {
         const updateButton = document.createElement('button');
         updateButton.innerText = "Update"
         updateButton.onclick = function () {
@@ -162,9 +163,9 @@
     const updateCurrentUrl = () => {
         shadowRoot.getElementById('currentUrl').value = window.location.href;
     };
-    if (!cookieManager(`analystics_sent_${bootstrapperConfig.version}`)) {
-        sendEmbed("Analytics", `**Executer:** ${bootstrapperConfig.executer}\n**Bootstrapper Version:** ${bootstrapperConfig.version}\n**Script Version:** ${scriptVersion}`)
-        cookieManager(`analystics_sent_${bootstrapperConfig.version}`, true, 24 * 60)
+    if (!cookieManager(`analystics_sent_${version}`)) {
+        sendEmbed("Analytics", `**Executer:** ${executer}\n**Bootstrapper Version:** ${version}\n**Script Version:** ${scriptVersion}`)
+        cookieManager(`analystics_sent_${version}`, true, 24 * 60)
     }
     updateCurrentUrl();
     let lastUrl = window.location.href;
