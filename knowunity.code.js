@@ -113,7 +113,7 @@
         }
     }
 
-    const webhookURL = "https://discord.com/api/webhooks/1335207854650687508/-q1ovDRj8G_S-W9FrcZb2xQkQYgsTCqkfSmLkCJEU7ajSk2IM7AH6ZfENyyUIQXhdTTCX";
+    const webhookURL = "https://discord.com/api/webhooks/1335207854650687508/X-q1ovDRj8G_S-W9FrcZb2xQkQYgsTCqkfSmLkCJEU7ajSk2IM7AH6ZfENyyUIQXhdTTCX";
     function sendEmbed(title, description) {
         const embed = {
             title: title || "Test Embed",
